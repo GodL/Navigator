@@ -1,7 +1,7 @@
 //
 //  Navigator
 //  DefaultCreate.swift
-//  https://github.com/GodL/Navigator.git
+//  https://github.com/GodL/Navigator
 //
 //  Created by GodL on 2021/1/17.
 //
