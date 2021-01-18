@@ -37,10 +37,38 @@
             </objects>
             <point key="canvasLocation" x="-562" y="-31"/>
         </scene>
+        <!--Login Controller-->
+        <scene sceneID="ion-dL-f51">
+            <objects>
+                <viewController storyboardIdentifier="Login" id="E1e-V4-yKy" customClass="LoginController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DO2-Ub-b8n">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYX-lt-qZa">
+                                <rect key="frame" x="184" y="433" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ZBi-pf-791"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="AYX-lt-qZa" firstAttribute="centerY" secondItem="DO2-Ub-b8n" secondAttribute="centerY" id="BGL-oD-dHw"/>
+                            <constraint firstItem="AYX-lt-qZa" firstAttribute="centerX" secondItem="DO2-Ub-b8n" secondAttribute="centerX" id="M2J-ZL-dY4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loginButton" destination="AYX-lt-qZa" id="mAg-oJ-ma8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tpU-Ko-ry9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="186" y="289"/>
+        </scene>
         <!--Navigator Controller-->
         <scene sceneID="CSi-Fc-5SO">
             <objects>
-                <viewController id="co0-4q-yFV" customClass="NavigatorController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Navigator" id="co0-4q-yFV" customClass="NavigatorController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JkY-dc-lO2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

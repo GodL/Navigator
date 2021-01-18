@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Navigator
 
 class NavigatorController: UIViewController {
     
@@ -24,7 +25,11 @@ class NavigatorController: UIViewController {
     }
     
     @objc func action(sender: UIButton) {
-        
+        if buttonTitle == "Push Navigator" || buttonTitle == "Interceptor Navigator" {
+            NavigatorRouter.router.navigate(Navigators.pop, context: ())
+        }else if buttonTitle == "Present Navigator" {
+            NavigatorRouter.router.navigate(Navigators.dismiss, context: ())
+        }
     }
 
     /*

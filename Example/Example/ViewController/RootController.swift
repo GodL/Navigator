@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Navigator
 
 class RootController: UITableViewController {
     
@@ -46,7 +47,14 @@ class RootController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let title = datas[indexPath.row]
+        if indexPath.row == 0 {
+            NavigatorRouter.router.navigate(Navigators.push, context: title)
+        }else if indexPath.row == 1 {
+            NavigatorRouter.router.navigate(Navigators.present, context: title)
+        }else if indexPath.row == 2 {
+            NavigatorRouter.router.navigate(Navigators.pushWithInterceptor, context: title)
+        }
     }
 
     /*
