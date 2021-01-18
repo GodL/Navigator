@@ -18,11 +18,11 @@ final public class NavigatorRouter: RouterType {
         if let interceptor = navigator.interceptor {
             interceptor.perform(with: context) { result in
                 if case .success(_) = result {
-                    navigator.action.perform(from: navigator.create.build(with: context), to: navigator.finder.find(), context: context)
+                    navigator.action.perform(from: navigator.finder.find(), to: navigator.create.build(with: context), context: context)
                 }
             }
         }else {
-            navigator.action.perform(from: navigator.create.build(with: context), to: navigator.finder.find(), context: context)
+            navigator.action.perform(from: navigator.finder.find(), to: navigator.create.build(with: context), context: context)
         }
     }
 }

@@ -12,7 +12,7 @@ public protocol NavigatorType {
     
     associatedtype Finder: Findable
     
-    associatedtype NavigatorAction: Action where NavigatorAction.From == Create.ViewController, NavigatorAction.To == Finder.ViewController, NavigatorAction.Context == Create.Context
+    associatedtype NavigatorAction: Action where NavigatorAction.From == Finder.ViewController, NavigatorAction.To == Create.ViewController, NavigatorAction.Context == Create.Context
     
     associatedtype Interceptor: Interceptable where Interceptor.Context == Create.Context
         
@@ -26,7 +26,7 @@ public protocol NavigatorType {
     
 }
 
-public struct Navigator<Create: Creatable, Finder: Findable, NavigatorAction: Action>: NavigatorType where Create.ViewController == NavigatorAction.From, Finder.ViewController == NavigatorAction.To, Create.Context == NavigatorAction.Context  {
+public struct Navigator<Create: Creatable, Finder: Findable, NavigatorAction: Action>: NavigatorType where Create.ViewController == NavigatorAction.To, Finder.ViewController == NavigatorAction.From, Create.Context == NavigatorAction.Context  {
     
     public var create: Create
     
