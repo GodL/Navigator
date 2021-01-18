@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Navigator",
+        "repositoryURL": "/Users/lihao10/Desktop/github/Navigator",
+        "state": {
+          "branch": "main",
+          "revision": "89c0000907852edfe07cb8da6b3df168b4928632",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
