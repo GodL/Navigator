@@ -56,7 +56,7 @@ struct LoginInterceptor: Interceptable {
         if isLogin {
             completion(.success(()))
         }else {
-            NavigatorRouter.router.navigate(Navigators.login) {
+            Navigators.login.navigate {
                 completion(.success(()))
             }
         }
