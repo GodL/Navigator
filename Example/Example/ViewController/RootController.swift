@@ -13,7 +13,6 @@ class RootController: UITableViewController {
         "Push Navigator",
         "Present Navigator",
         "Interceptor Navigator",
-        "Custom Context Navigator"
     ]
     
 
