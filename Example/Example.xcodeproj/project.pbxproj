@@ -11,6 +11,7 @@
 		465DE8AC25B569D100FCFCF9 /* NavigatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465DE8AB25B569D100FCFCF9 /* NavigatorController.swift */; };
 		465DE8B225B56ACB00FCFCF9 /* Navigators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465DE8B125B56ACB00FCFCF9 /* Navigators.swift */; };
 		465DE8C425B57ABF00FCFCF9 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465DE8C325B57ABF00FCFCF9 /* LoginController.swift */; };
+		465DE95B25B5A97900FCFCF9 /* Navigator in Frameworks */ = {isa = PBXBuildFile; productRef = 465DE95A25B5A97900FCFCF9 /* Navigator */; };
 		4671111725B561FD006931A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4671111625B561FD006931A5 /* AppDelegate.swift */; };
 		4671111925B561FD006931A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4671111825B561FD006931A5 /* SceneDelegate.swift */; };
 		4671111E25B561FD006931A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4671111C25B561FD006931A5 /* Main.storyboard */; };
@@ -18,7 +19,6 @@
 		4671112325B56202006931A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4671112125B56202006931A5 /* LaunchScreen.storyboard */; };
 		4671112E25B56202006931A5 /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4671112D25B56202006931A5 /* ExampleTests.swift */; };
 		4671113925B56202006931A5 /* ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4671113825B56202006931A5 /* ExampleUITests.swift */; };
-		4671114B25B563DE006931A5 /* Navigator in Frameworks */ = {isa = PBXBuildFile; productRef = 4671114A25B563DE006931A5 /* Navigator */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4671114B25B563DE006931A5 /* Navigator in Frameworks */,
+				465DE95B25B5A97900FCFCF9 /* Navigator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,7 +172,7 @@
 			);
 			name = Example;
 			packageProductDependencies = (
-				4671114A25B563DE006931A5 /* Navigator */,
+				465DE95A25B5A97900FCFCF9 /* Navigator */,
 			);
 			productName = Example;
 			productReference = 4671111325B561FD006931A5 /* Example.app */;
@@ -246,7 +246,7 @@
 			);
 			mainGroup = 4671110A25B561FD006931A5;
 			packageReferences = (
-				4671114925B563DE006931A5 /* XCRemoteSwiftPackageReference "Navigator" */,
+				465DE95925B5A97900FCFCF9 /* XCRemoteSwiftPackageReference "Navigator" */,
 			);
 			productRefGroup = 4671111425B561FD006931A5 /* Products */;
 			projectDirPath = "";
@@ -625,20 +625,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4671114925B563DE006931A5 /* XCRemoteSwiftPackageReference "Navigator" */ = {
+		465DE95925B5A97900FCFCF9 /* XCRemoteSwiftPackageReference "Navigator" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "file:///Users/lihao10/Desktop/github/Navigator";
+			repositoryURL = "https://github.com/GodL/Navigator.git";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4671114A25B563DE006931A5 /* Navigator */ = {
+		465DE95A25B5A97900FCFCF9 /* Navigator */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4671114925B563DE006931A5 /* XCRemoteSwiftPackageReference "Navigator" */;
+			package = 465DE95925B5A97900FCFCF9 /* XCRemoteSwiftPackageReference "Navigator" */;
 			productName = Navigator;
 		};
 /* End XCSwiftPackageProductDependency section */

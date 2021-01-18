@@ -3,11 +3,11 @@
     "pins": [
       {
         "package": "Navigator",
-        "repositoryURL": "/Users/lihao10/Desktop/github/Navigator",
+        "repositoryURL": "https://github.com/GodL/Navigator.git",
         "state": {
-          "branch": "main",
-          "revision": "794f8a0092b32a23b915f92eb994760efef64dc1",
-          "version": null
+          "branch": null,
+          "revision": "7f5e0959b4f748435abfef928948d980e85bb7b9",
+          "version": "1.0.0"
         }
       }
     ]
