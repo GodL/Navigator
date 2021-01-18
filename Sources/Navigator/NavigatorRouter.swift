@@ -26,3 +26,9 @@ final public class NavigatorRouter: RouterType {
         }
     }
 }
+
+extension Navigator {
+    public func navigate(with context: Create.Context) {
+        NavigatorRouter.router.navigate(self, context: context)
+    }
+}
