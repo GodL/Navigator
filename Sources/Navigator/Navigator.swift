@@ -33,12 +33,24 @@ public struct Navigator<Create: Creatable, Finder: Findable, NavigatorAction: Ac
     
     public let action: NavigatorAction
     
-    public var interceptor: Interceptor?
+    public var interceptor: InterceptorAssemble<Interceptor>?
     
     public init(create: Create, finder: Finder, action: NavigatorAction, interceptor: Interceptor? = nil) {
+        let `is`: [Interceptor]?
+        if let i = interceptor {
+            `is` = [i]
+        }else {
+            `is` = nil
+        }
+        self.init(create: create, finder: finder, action: action, interceptors: `is`)
+    }
+    
+    public init(create: Create, finder: Finder, action: NavigatorAction, interceptors: [Interceptor]? = nil) {
         self.create = create
         self.finder = finder
         self.action = action
-        self.interceptor = interceptor
+        if let i = interceptors, i.isEmpty == false {
+            self.interceptor = InterceptorAssemble(i)
+        }
     }
 }
