@@ -22,7 +22,11 @@ public protocol NavigatorType {
     
     var action: NavigatorAction { get }
     
-    var interceptor: Interceptor? { get }
+    var interceptor: Interceptor { get }
+}
+
+extension NavigatorType {
+    public var interceptor: EmptyInterceptor<Create.Context> { EmptyInterceptor() }
 }
 
 public struct Navigator<Create: Creatable, Finder: Findable, NavigatorAction: Action, Interceptor: Interceptable>: NavigatorType where Create.ViewController == NavigatorAction.From, Finder.ViewController == NavigatorAction.To, Create.Context == NavigatorAction.Context, Interceptor.Context == Create.Context  {
@@ -33,24 +37,16 @@ public struct Navigator<Create: Creatable, Finder: Findable, NavigatorAction: Ac
     
     public let action: NavigatorAction
     
-    public var interceptor: InterceptorAssemble<Interceptor>?
+    public var interceptor: InterceptorAssemble<Interceptor>
     
-    public init(create: Create, finder: Finder, action: NavigatorAction, interceptor: Interceptor? = nil) {
-        let `is`: [Interceptor]?
-        if let i = interceptor {
-            `is` = [i]
-        }else {
-            `is` = nil
-        }
-        self.init(create: create, finder: finder, action: action, interceptors: `is`)
+    public init(create: Create, finder: Finder, action: NavigatorAction, interceptor: Interceptor = EmptyInterceptor<Create.Context>() as! Interceptor) {
+        self.init(create: create, finder: finder, action: action, interceptors: interceptor)
     }
     
-    public init(create: Create, finder: Finder, action: NavigatorAction, interceptors: [Interceptor]? = nil) {
+    public init(create: Create, finder: Finder, action: NavigatorAction, interceptors: Interceptor ...) {
         self.create = create
         self.finder = finder
         self.action = action
-        if let i = interceptors, i.isEmpty == false {
-            self.interceptor = InterceptorAssemble(i)
-        }
+        self.interceptor = InterceptorAssemble(interceptors)
     }
 }
