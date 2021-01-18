@@ -15,13 +15,3 @@ public protocol Action {
     
     func perform(from: From, to: To, context: Context)
 }
-
-public protocol Service: Action where From == Void, To == Void {
-    func perform(with context: Context)
-}
-
-extension Service {
-    public func perform(from: From, to: To, context: Context) {
-        perform(with: context)
-    }
-}
