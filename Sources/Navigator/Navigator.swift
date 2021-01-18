@@ -15,21 +15,18 @@ public protocol NavigatorType {
     associatedtype NavigatorAction: Action where NavigatorAction.From == Create.ViewController, NavigatorAction.To == Finder.ViewController, NavigatorAction.Context == Create.Context
     
     associatedtype Interceptor: Interceptable where Interceptor.Context == Create.Context
-    
+        
     var create: Create { get }
     
     var finder: Finder { get }
     
     var action: NavigatorAction { get }
+     
+    var interceptor: Interceptor? { get }
     
-    var interceptor: Interceptor { get }
 }
 
-extension NavigatorType {
-    public var interceptor: EmptyInterceptor<Create.Context> { EmptyInterceptor() }
-}
-
-public struct Navigator<Create: Creatable, Finder: Findable, NavigatorAction: Action, Interceptor: Interceptable>: NavigatorType where Create.ViewController == NavigatorAction.From, Finder.ViewController == NavigatorAction.To, Create.Context == NavigatorAction.Context, Interceptor.Context == Create.Context  {
+public struct Navigator<Create: Creatable, Finder: Findable, NavigatorAction: Action>: NavigatorType where Create.ViewController == NavigatorAction.From, Finder.ViewController == NavigatorAction.To, Create.Context == NavigatorAction.Context  {
     
     public var create: Create
     
@@ -37,16 +34,32 @@ public struct Navigator<Create: Creatable, Finder: Findable, NavigatorAction: Ac
     
     public let action: NavigatorAction
     
-    public var interceptor: InterceptorAssemble<Interceptor>
+    public var interceptor: AnyInterceptor<Create.Context>?
     
-    public init(create: Create, finder: Finder, action: NavigatorAction, interceptor: Interceptor = EmptyInterceptor<Create.Context>() as! Interceptor) {
-        self.init(create: create, finder: finder, action: action, interceptors: interceptor)
-    }
-    
-    public init(create: Create, finder: Finder, action: NavigatorAction, interceptors: Interceptor ...) {
+    public init(create: Create, finder: Finder, action: NavigatorAction) {
         self.create = create
         self.finder = finder
         self.action = action
-        self.interceptor = InterceptorAssemble(interceptors)
+    }
+    
+    public init<I: Interceptable>(create: Create, finder: Finder, action: NavigatorAction, interceptor: I) where I.Context == Create.Context {
+        self.create = create
+        self.finder = finder
+        self.action = action
+        self.interceptor = AnyInterceptor(interceptor)
+    }
+    
+    public init<I: Interceptable>(create: Create, finder: Finder, action: NavigatorAction, interceptors: I ...) where I.Context == Create.Context {
+        self.create = create
+        self.finder = finder
+        self.action = action
+        self.interceptor = AnyInterceptor(InterceptorAssemble(interceptors))
+    }
+    
+    public init<I: Interceptable>(create: Create, finder: Finder, action: NavigatorAction, interceptors: [I]) where I.Context == Create.Context {
+        self.create = create
+        self.finder = finder
+        self.action = action
+        self.interceptor = AnyInterceptor(InterceptorAssemble(interceptors))
     }
 }

@@ -7,25 +7,24 @@
 //  Created by GodL on 2021/1/17.
 //
 
-public struct AnyInterceptor: Interceptable {
+public struct AnyInterceptor<Context>: Interceptable {
     
     private typealias CompletionType = (Result<Void, Error>) -> Void
         
     private let base: Any
     
-    private let _perform: (Any,@escaping CompletionType) -> Void
+    private let _perform: (Context,@escaping CompletionType) -> Void
     
-    public init<I: Interceptable>(_ base: I) {
+    public init<I: Interceptable>(_ base: I) where I.Context == Context {
         self.base = base
         
-        _perform = { (context: Any, completion: @escaping CompletionType) in
-            guard let context = context as? I.Context else { fatalError(" Generic parameter error ") }
+        _perform = { (context: Context, completion: @escaping CompletionType) in
             
             base.perform(with: context, completion: completion)
         }
     }
     
-    public func perform(with context: Any, completion: @escaping (Result<Void, Error>) -> Void) {
+    public func perform(with context: Context, completion: @escaping (Result<Void, Error>) -> Void) {
         _perform(context, completion)
     }
 }
