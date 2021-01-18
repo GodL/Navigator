@@ -1,3 +1,3 @@
 # Navigator
 
-A description of this package.
+`Navigator` is a navigation process implemented using generics and protocols
