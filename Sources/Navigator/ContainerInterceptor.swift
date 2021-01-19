@@ -1,13 +1,12 @@
-//  A type-erased Interceptable value
 //
-//  AnyInterceptor.swift
+//  ContainerInterceptor.swift
 //  Navigator
 //  https://github.com/GodL/Navigator
 //
 //  Created by GodL on 2021/1/17.
 //
 
-public struct AnyInterceptor<Context>: Interceptable {
+public struct ContainerInterceptor<Context>: Interceptable {
     
     private typealias CompletionType = (Result<Void, Error>) -> Void
         

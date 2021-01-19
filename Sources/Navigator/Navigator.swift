@@ -34,7 +34,7 @@ public struct Navigator<Create: Creatable, Finder: Findable, NavigatorAction: Ac
     
     public let action: NavigatorAction
     
-    public var interceptor: AnyInterceptor<Create.Context>?
+    public var interceptor: ContainerInterceptor<Create.Context>?
     
     public init(create: Create, finder: Finder, action: NavigatorAction) {
         self.create = create
@@ -46,20 +46,20 @@ public struct Navigator<Create: Creatable, Finder: Findable, NavigatorAction: Ac
         self.create = create
         self.finder = finder
         self.action = action
-        self.interceptor = AnyInterceptor(interceptor)
+        self.interceptor = ContainerInterceptor(interceptor)
     }
     
     public init<I: Interceptable>(create: Create, finder: Finder, action: NavigatorAction, interceptors: I ...) where I.Context == Create.Context {
         self.create = create
         self.finder = finder
         self.action = action
-        self.interceptor = AnyInterceptor(InterceptorAssemble(interceptors))
+        self.interceptor = ContainerInterceptor(InterceptorAssemble(interceptors))
     }
     
     public init<I: Interceptable>(create: Create, finder: Finder, action: NavigatorAction, interceptors: [I]) where I.Context == Create.Context {
         self.create = create
         self.finder = finder
         self.action = action
-        self.interceptor = AnyInterceptor(InterceptorAssemble(interceptors))
+        self.interceptor = ContainerInterceptor(InterceptorAssemble(interceptors))
     }
 }

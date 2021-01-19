@@ -19,7 +19,7 @@ To integrate `Navigator` into your project using SPM, specify it in your `Packag
 let package = Package(
     …
     dependencies: [
-        .package(url: "https://github.com/GodL/Navigator.git", from: "1.0.0"),
+        .package(url: "https://github.com/GodL/Navigator.git", from: "1.0.1"),
     ],
     targets: [
         .target(name: "YourTarget", dependencies: ["Navigator", …])
